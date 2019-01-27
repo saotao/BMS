@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stao.BMS.dao.DishonestMapper">
+  <resultMap id="BaseResultMap" type="stao.BMS.entity.Dishonest">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="alarm_long" jdbcType="BIGINT" property="alarmLong" />
+    <result column="alarm_time" jdbcType="BIGINT" property="alarmTime" />
+    <result column="alarm_reason" jdbcType="VARCHAR" property="alarmReason" />
+    <result column="alarm_type" jdbcType="TINYINT" property="alarmType" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="borrow_statue" jdbcType="TINYINT" property="borrowStatue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, alarm_long, alarm_time, alarm_reason, alarm_type, status, create_time, 
+    update_time, borrow_statue
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dishonest
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dishonest
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="stao.BMS.entity.Dishonest">
+    insert into dishonest (id, user_id, alarm_long, 
+      alarm_time, alarm_reason, alarm_type, 
+      status, create_time, update_time, 
+      borrow_statue)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{alarmLong,jdbcType=BIGINT}, 
+      #{alarmTime,jdbcType=BIGINT}, #{alarmReason,jdbcType=VARCHAR}, #{alarmType,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{borrowStatue,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="stao.BMS.entity.Dishonest">
+    insert into dishonest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="alarmLong != null">
+        alarm_long,
+      </if>
+      <if test="alarmTime != null">
+        alarm_time,
+      </if>
+      <if test="alarmReason != null">
+        alarm_reason,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="borrowStatue != null">
+        borrow_statue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmLong != null">
+        #{alarmLong,jdbcType=BIGINT},
+      </if>
+      <if test="alarmTime != null">
+        #{alarmTime,jdbcType=BIGINT},
+      </if>
+      <if test="alarmReason != null">
+        #{alarmReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowStatue != null">
+        #{borrowStatue,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="stao.BMS.entity.Dishonest">
+    update dishonest
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmLong != null">
+        alarm_long = #{alarmLong,jdbcType=BIGINT},
+      </if>
+      <if test="alarmTime != null">
+        alarm_time = #{alarmTime,jdbcType=BIGINT},
+      </if>
+      <if test="alarmReason != null">
+        alarm_reason = #{alarmReason,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowStatue != null">
+        borrow_statue = #{borrowStatue,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="stao.BMS.entity.Dishonest">
+    update dishonest
+    set user_id = #{userId,jdbcType=INTEGER},
+      alarm_long = #{alarmLong,jdbcType=BIGINT},
+      alarm_time = #{alarmTime,jdbcType=BIGINT},
+      alarm_reason = #{alarmReason,jdbcType=VARCHAR},
+      alarm_type = #{alarmType,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      borrow_statue = #{borrowStatue,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

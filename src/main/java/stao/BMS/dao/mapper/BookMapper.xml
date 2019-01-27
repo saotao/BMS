@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stao.BMS.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="stao.BMS.entity.Book">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="book_auther" jdbcType="VARCHAR" property="bookAuther" />
+    <result column="book_remark" jdbcType="VARCHAR" property="bookRemark" />
+    <result column="book_page_size" jdbcType="INTEGER" property="bookPageSize" />
+    <result column="book_word_size" jdbcType="INTEGER" property="bookWordSize" />
+    <result column="book_price" jdbcType="DECIMAL" property="bookPrice" />
+    <result column="book_publish" jdbcType="VARCHAR" property="bookPublish" />
+    <result column="book_publish_time" jdbcType="TIMESTAMP" property="bookPublishTime" />
+    <result column="book_type" jdbcType="TINYINT" property="bookType" />
+    <result column="book_storage" jdbcType="INTEGER" property="bookStorage" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, book_name, book_auther, book_remark, book_page_size, book_word_size, book_price,
+    book_publish, book_publish_time, book_type, book_storage, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="stao.BMS.entity.Book">
+    insert into book (id, book_name, book_auther,
+      book_remark, book_page_size, book_word_size,
+      book_price, book_publish, book_publish_time,
+      book_type, book_storage, status,
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookAuther,jdbcType=VARCHAR},
+      #{bookRemark,jdbcType=VARCHAR}, #{bookPageSize,jdbcType=INTEGER}, #{bookWordSize,jdbcType=INTEGER},
+      #{bookPrice,jdbcType=DECIMAL}, #{bookPublish,jdbcType=VARCHAR}, #{bookPublishTime,jdbcType=BIGINT},
+      #{bookType,jdbcType=TINYINT}, #{bookStorage,jdbcType=INTEGER}, #{status,jdbcType=TINYINT},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="stao.BMS.entity.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="bookAuther != null">
+        book_auther,
+      </if>
+      <if test="bookRemark != null">
+        book_remark,
+      </if>
+      <if test="bookPageSize != null">
+        book_page_size,
+      </if>
+      <if test="bookWordSize != null">
+        book_word_size,
+      </if>
+      <if test="bookPrice != null">
+        book_price,
+      </if>
+      <if test="bookPublish != null">
+        book_publish,
+      </if>
+      <if test="bookPublishTime != null">
+        book_publish_time,
+      </if>
+      <if test="bookType != null">
+        book_type,
+      </if>
+      <if test="bookStorage != null">
+        book_storage,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuther != null">
+        #{bookAuther,jdbcType=VARCHAR},
+      </if>
+      <if test="bookRemark != null">
+        #{bookRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPageSize != null">
+        #{bookPageSize,jdbcType=INTEGER},
+      </if>
+      <if test="bookWordSize != null">
+        #{bookWordSize,jdbcType=INTEGER},
+      </if>
+      <if test="bookPrice != null">
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPublish != null">
+        #{bookPublish,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishTime != null">
+        #{bookPublishTime,jdbcType=BIGINT},
+      </if>
+      <if test="bookType != null">
+        #{bookType,jdbcType=TINYINT},
+      </if>
+      <if test="bookStorage != null">
+        #{bookStorage,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="stao.BMS.entity.Book">
+    update book
+    <set>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuther != null">
+        book_auther = #{bookAuther,jdbcType=VARCHAR},
+      </if>
+      <if test="bookRemark != null">
+        book_remark = #{bookRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPageSize != null">
+        book_page_size = #{bookPageSize,jdbcType=INTEGER},
+      </if>
+      <if test="bookWordSize != null">
+        book_word_size = #{bookWordSize,jdbcType=INTEGER},
+      </if>
+      <if test="bookPrice != null">
+        book_price = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookPublish != null">
+        book_publish = #{bookPublish,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublishTime != null">
+        book_publish_time = #{bookPublishTime,jdbcType=BIGINT},
+      </if>
+      <if test="bookType != null">
+        book_type = #{bookType,jdbcType=TINYINT},
+      </if>
+      <if test="bookStorage != null">
+        book_storage = #{bookStorage,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="stao.BMS.entity.Book">
+    update book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_auther = #{bookAuther,jdbcType=VARCHAR},
+      book_remark = #{bookRemark,jdbcType=VARCHAR},
+      book_page_size = #{bookPageSize,jdbcType=INTEGER},
+      book_word_size = #{bookWordSize,jdbcType=INTEGER},
+      book_price = #{bookPrice,jdbcType=DECIMAL},
+      book_publish = #{bookPublish,jdbcType=VARCHAR},
+      book_publish_time = #{bookPublishTime,jdbcType=BIGINT},
+      book_type = #{bookType,jdbcType=TINYINT},
+      book_storage = #{bookStorage,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <title>登录/注册</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <!-- 引入 Bootstrap -->
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+      <!--  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bootstrap-datetime/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+-->
+    <link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap-datetime/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        #loginContent{
+            position: absolute;
+            width: 600px;
+            left:45%;
+            top:30%;
+            margin-left:-200px;
+            margin-top:-100px;
+            border:1px ;
+        }
+        #register{
+            float: right;
+            width: 100%;
+        }
+        #register-form input{
+            width: 91%;
+            float: right;
+            background-color: white;
+            height: 50%;
+        }
+        #register-form label{
+            height: 25px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid dropdown">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.jsp">图书管理系统</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-search"></span> 图书检索</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th-large"></span> 忘记密码</a></li>
+            <li><a href="../html/login.html"><span class="glyphicon glyphicon-list-alt"></span> 前去登录</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box" id="loginContent">
+                    <div class="form-top">
+                        <div class="form-top-left" style="text-align: center">
+                            <h3>用户注册</h3>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form" action="#" onsubmit="return false"  id="register-form" enctype="multipart/form-data">
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userName">账号：</label>
+                                <input type="text" name="userName" placeholder="账号……" class="form-control" id="userName">
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userPwd">密码：</label>
+                                <input type="password" name="userPwd" placeholder="密码……" class="form-control" id="userPwd">
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userPwd1">密码：</label>
+                                <input type="password" name="userPwd" placeholder="重复一次密码……" class="form-control" id="userPwd1">
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userRealName">姓名：</label>
+                                <input type="text" name="userRealName" placeholder="真实姓名……" class="form-control" id="userRealName">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-inline input-group date" id="datetimepicker" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+                                    <label class="text-muted" for="userBirth">生日：</label>
+                                    <input class="form-control" placeholder="生日……" id="userBirth" type="text" name="userBirth" readonly>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userEmail">邮箱：</label>
+                                <input type="text" name="userEmail" placeholder="邮箱……" class="form-control" id="userEmail">
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userPhone">电话：</label>
+                                <input type="text" name="userPhone" placeholder="电话……" class="form-control" id="userPhone">
+                            </div>
+                            <div class="form-inline form-group">
+                                <label class="text-muted" for="userPhone">图片：</label>
+                                <input type="file" name="imgFile" placeholder="图片信息……" class="form-control" id="imgFile">
+                            </div>
+                            <div>
+                                <button type="submit" class="btn-info" id="register" >注册</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap-datetime/moment-with-locales.js"></script>
+<script src="/bootstrap-datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="/bootstrap-datetime/bootstrap-datetimepicker.zh-CN.js"></script>
+-->
+<!--调试-->
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bootstrap-datetime/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bootstrap-datetime/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    const path = "http://"+document.location.host;
+    $('#datetimepicker').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 4,
+        minView: 2,
+        forceParse: 0
+    });
+
+    function register() {
+        $.ajax({
+            url: path+'/user/register',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#register-form')[0]),
+            processData: false,
+            contentType: false
+        }).done(function(res) {
+            if(res.code===200){
+                alert("注册成功，激活邮件已发送至您的邮箱，请前去激活！");
+            }else alert(res.msg);
+        }).fail(function(res) {
+                alert(res.msg);
+            });
+    }
+
+    $("#register").click(function () {
+        register();
+    })
+</script>
+
+</body>
+
+</html>

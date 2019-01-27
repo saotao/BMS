@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <title>登录/注册</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <!-- 引入 Bootstrap -->
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <!--
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bootstrap-datetime/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    -->
+
+    <link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap-datetime/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+        <input class="span2" size="16" type="text" value="12-02-2012">
+        <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    <button type="button" class="btn-danger">adqw</button>
+
+
+<script type="javascript">
+    function gaiyemian(flag) {
+        if(flag===0){
+            document.write()
+        }else if(flag===1){
+            $("#loginContent").innerHTML=""
+        }
+
+        $("#register").click(function () {
+            gaiyemian(0);
+        })
+    }
+
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-MM-dd',
+        endDate: new Date(),
+        minView: 1,
+        todayHighlight: true,
+        language: 'ch'
+    });
+</script>
+
+</body>
+<!--
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap-datetime/moment-with-locales.js"></script>
+<script src="/bootstrap-datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="/bootstrap-datetime/bootstrap-datetimepicker.zh-CN.js"></script>
+-->
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../bootstrap-datetime/moment-with-locales.js"></script>
+<script src="../bootstrap-datetime/bootstrap-datetimepicker.min.js"></script>
+<script src="../bootstrap-datetime/bootstrap-datetimepicker.zh-CN.js"></script>
+
+</html>

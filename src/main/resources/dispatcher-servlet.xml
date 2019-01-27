@@ -9,14 +9,19 @@
     <!--启用spring的一些annotation -->
     <context:annotation-config/>
 
+    <context:component-scan base-package="stao.BMS.controller"/>
+
+    <context:property-placeholder location="classpath:config.properties"/>
+
     <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
     <mvc:annotation-driven/>
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
-    <!--<mvc:resources mapping="/css/**" location="/WEB-INF/statics/css/"/>
-    <mvc:resources mapping="/js/**" location="/WEB-INF/statics/js/"/>
-    <mvc:resources mapping="/image/**" location="/WEB-INF/statics/image/"/>-->
+    <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/static/bootstrap-3.3.7-dist/"/>
+    <mvc:resources mapping="/bootstrap-datetime/**" location="/WEB-INF/static/bootstrap-datetime/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/static/js/"/>
+    <mvc:resources mapping="/html/**" location="/WEB-INF/static/html/"/>
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
@@ -27,6 +32,5 @@
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
 
-    <!-- 自动扫描装配 -->
-    <context:component-scan base-package="stao.BMS"/>
+
 </beans>

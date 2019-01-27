@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stao.BMS.dao.AlarmMapper">
+  <resultMap id="BaseResultMap" type="stao.BMS.entity.Alarm">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="borrow_id" jdbcType="INTEGER" property="borrowId" />
+    <result column="alarm_time" jdbcType="BIGINT" property="alarmTime" />
+    <result column="alarm_long" jdbcType="BIGINT" property="alarmLong" />
+    <result column="alarm_type" jdbcType="TINYINT" property="alarmType" />
+    <result column="alarm_reason" jdbcType="VARCHAR" property="alarmReason" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, borrow_id, alarm_time, alarm_long, alarm_type, alarm_reason, status, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from alarm
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from alarm
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="stao.BMS.entity.Alarm">
+    insert into alarm (id, borrow_id, alarm_time, 
+      alarm_long, alarm_type, alarm_reason, 
+      status, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{borrowId,jdbcType=INTEGER}, #{alarmTime,jdbcType=BIGINT}, 
+      #{alarmLong,jdbcType=BIGINT}, #{alarmType,jdbcType=TINYINT}, #{alarmReason,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="stao.BMS.entity.Alarm">
+    insert into alarm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="borrowId != null">
+        borrow_id,
+      </if>
+      <if test="alarmTime != null">
+        alarm_time,
+      </if>
+      <if test="alarmLong != null">
+        alarm_long,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="alarmReason != null">
+        alarm_reason,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="borrowId != null">
+        #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmTime != null">
+        #{alarmTime,jdbcType=BIGINT},
+      </if>
+      <if test="alarmLong != null">
+        #{alarmLong,jdbcType=BIGINT},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=TINYINT},
+      </if>
+      <if test="alarmReason != null">
+        #{alarmReason,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="stao.BMS.entity.Alarm">
+    update alarm
+    <set>
+      <if test="borrowId != null">
+        borrow_id = #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="alarmTime != null">
+        alarm_time = #{alarmTime,jdbcType=BIGINT},
+      </if>
+      <if test="alarmLong != null">
+        alarm_long = #{alarmLong,jdbcType=BIGINT},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=TINYINT},
+      </if>
+      <if test="alarmReason != null">
+        alarm_reason = #{alarmReason,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="stao.BMS.entity.Alarm">
+    update alarm
+    set borrow_id = #{borrowId,jdbcType=INTEGER},
+      alarm_time = #{alarmTime,jdbcType=BIGINT},
+      alarm_long = #{alarmLong,jdbcType=BIGINT},
+      alarm_type = #{alarmType,jdbcType=TINYINT},
+      alarm_reason = #{alarmReason,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
